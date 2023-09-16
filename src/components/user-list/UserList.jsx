@@ -3,7 +3,7 @@ import React from 'react'
 export default function UserList(props) {
   const { users } = props
   return (
-    <div className="container ">
+    <div className="container table-responsive">
       <h1 className="text-center">User List</h1>
       <table className="table table-dark table-bordered table-striped table-hover rounded">
         <thead>

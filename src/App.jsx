@@ -25,9 +25,16 @@ function App() {
       email: 'Nathan@yesenia.net',
     },
   ])
+
+  //Add user functions
+  const addUser = (user) => {
+    console.log('user', user)
+    setUsers([...users, user])
+  }
+
   return (
     <div className="App">
-      <UserForm />
+      <UserForm addUser={addUser} />
       <UserList users={users} />
     </div>
   )
