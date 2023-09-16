@@ -36,61 +36,63 @@ Here's an example component (`UserForm.js`):
 jsxCopy code
 
 ```
-
-`import React, { useState } from 'react';
+import React, { useState } from 'react';
 
 function UserForm() {
-const [name, setName] = useState('');
-const [email, setEmail] = useState('');
-const [users, setUsers] = useState([]);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [users, setUsers] = useState([]);
 
-const handleSubmit = (e) => {
-e.preventDefault();
-if (name && email) {
-setUsers([...users, { name, email }]);
-setName('');
-setEmail('');
-}
-};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (name && email) {
+      setUsers([...users, { name, email }]);
+      setName('');
+      setEmail('');
+    }
+  };
 
-return (
-<div>
-<form onSubmit={handleSubmit}>
-<label htmlFor="name">Name:</label>
-<input
-type="text"
-id="name"
-value={name}
-onChange={(e) => setName(e.target.value)}
-/>
-<label htmlFor="email">Email:</label>
-<input
-type="email"
-id="email"
-value={email}
-onChange={(e) => setEmail(e.target.value)}
-/>
-<button type="submit">Add User</button>
-</form>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Email</th>
-</tr>
-</thead>
-<tbody>
-{users.map((user, index) => (
-<tr key={index}>
-<td>{user.name}</td>
-<td>{user.email}</td>
-</tr>
-))}
-</tbody>
-</table>
-</div>
-);
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <label htmlFor="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <button type="submit">Add User</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user, index) => (
+            <tr key={index}>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }
+
+export default UserForm;
+
 ```
 
 export default UserForm;`
