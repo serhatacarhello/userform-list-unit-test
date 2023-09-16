@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 
 import UserForm from './UserForm'
 import userEvent from '@testing-library/user-event'
@@ -70,4 +70,25 @@ it('resets the form after submission', () => {
   // Check if the form fields are empty after submission
   expect(nameInput.value).toBe('')
   expect(emailInput.value).toBe('')
+})
+
+test('it resets the form after submission using userEvent', async () => {
+  render(<UserForm addUser={mockAddUser} />)
+
+  const nameInput = screen.getByLabelText(/name/i)
+  const emailInput = screen.getByLabelText(/email/i)
+  const submitButton = screen.getByText(/submit/i)
+
+  // Use userEvent to change input values
+  userEvent.type(nameInput, 'John Doe')
+  userEvent.type(emailInput, 'johndoe@example.com')
+
+  expect(nameInput).toHaveValue('John Doe')
+  expect(emailInput).toHaveValue('johndoe@example.com')
+
+  userEvent.click(submitButton)
+
+  // Use userEvent to reset the form
+  await waitFor(() => expect(nameInput).toHaveValue(''))
+  await waitFor(() => expect(emailInput).toHaveValue(''))
 })

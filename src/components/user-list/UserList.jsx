@@ -5,7 +5,7 @@ export default function UserList(props) {
   return (
     <div className="container table-responsive">
       <h1 className="text-center">User List</h1>
-      <table className="table table-dark table-bordered table-striped table-hover rounded">
+      <table className="table table-dark table-bordered table-striped table-hover">
         <thead>
           <tr>
             <th>Name</th>

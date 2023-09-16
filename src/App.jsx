@@ -28,12 +28,12 @@ function App() {
 
   //Add user functions
   const addUser = (user) => {
-    console.log('user', user)
+    // console.log('user', user)
     setUsers([...users, user])
   }
 
   return (
-    <div className="App">
+    <div className="container bg-dark min-vw-100 min-vh-100  mx-auto text-white  border border-2 border-danger">
       <UserForm addUser={addUser} />
       <UserList users={users} />
     </div>
